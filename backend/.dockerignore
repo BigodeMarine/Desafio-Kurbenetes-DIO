@@ -1,0 +1,6 @@
+*
+!Dockerfile
+!index.php
+!conexao.php
+!apache.conf
+!php.ini

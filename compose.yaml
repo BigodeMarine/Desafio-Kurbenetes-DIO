@@ -1,0 +1,41 @@
+name: mensagens
+services:
+  frontend:
+    image: dio-frontend:1.0.1
+    build: ./frontend
+    ports:
+      - "127.0.0.1:${APP_PORT:-8080}:8080"
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
+    security_opt: ["no-new-privileges:true"]
+    cap_drop: [ALL]
+  backend:
+    image: dio-backend:1.0.0
+    build: ./backend
+    environment:
+      DB_HOST: mysql
+      DB_NAME: meubanco
+      DB_USER: app
+      DB_PASSWORD: ${MYSQL_PASSWORD:?Defina MYSQL_PASSWORD no .env}
+    depends_on:
+      mysql:
+        condition: service_healthy
+    restart: unless-stopped
+    security_opt: ["no-new-privileges:true"]
+    cap_drop: [ALL]
+  mysql:
+    image: dio-mysql:1.0.0
+    build: ./database
+    environment:
+      MYSQL_DATABASE: meubanco
+      MYSQL_USER: app
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:?Defina MYSQL_PASSWORD no .env}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?Defina MYSQL_ROOT_PASSWORD no .env}
+    volumes:
+      - mysql-data:/var/lib/mysql
+    restart: unless-stopped
+    security_opt: ["no-new-privileges:true"]
+volumes:
+  mysql-data:

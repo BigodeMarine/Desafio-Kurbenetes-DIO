@@ -1,0 +1,22 @@
+# Opcional: requer controller compatível com a IngressClass indicada.
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: frontend
+  namespace: mensagens
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts: [mensagens.example.com]
+      secretName: mensagens-tls
+  rules:
+    - host: mensagens.example.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend
+                port:
+                  number: 8080
