@@ -1,6 +1,6 @@
-# Deploy de uma aplicação completa com Docker e Kubernetes
+# Deploy de uma aplicação completa com Docker e Kubernetes  
 
-Aplicação de comentários em HTML, CSS, JavaScript e PHP com MySQL. Base de **Denilson Bonatti**: [k8s-projeto1-app-base](https://github.com/denilsonbonatti/k8s-projeto1-app-base), commit `950d5d94ff12a2b9b67da56cf16abb544cd58587`. O histórico original foi preservado. Foram corrigidos formulário, envio, conexão, validação, SQL e implantação.
+Aplicação de comentários em HTML, CSS, JavaScript e PHP com MySQL. Base de **Denilson Bonatti**: [k8s-projeto1-app-base](https://github.com/denilsonbonatti/k8s-projeto1-app-base), commit `950d5d94ff12a2b9b67da56cf16abb544cd58587`. O histórico original foi preservado. Foram corrigidos formulário, envio, conexão, validação, SQL e implantação.  
 
 ## Arquitetura e decisões
 
